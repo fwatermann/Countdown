@@ -24,6 +24,7 @@ export class CountdownComponent implements OnInit {
 
   private TARGET: number = new Date(new Date().getFullYear() + 1, 0, 1, 0, 0, 0, 0).getTime();
   private TEXT = "Frohes neues Jahr!";
+  protected SUBTEXT = "https://countdown.w-mi.de";
 
   constructor(private element: ElementRef, private route: ActivatedRoute) {
     this.element.nativeElement.style.fontSize = "14vW";
@@ -40,8 +41,20 @@ export class CountdownComponent implements OnInit {
               this.TARGET = Date.now() + parseInt(params[key]);
               break;
             case 'text':
-              this.TEXT = params[key];
+              const text: string = params[key];
+              if(text.startsWith("b64.")) {
+                this.TEXT = atob(text.substring(4));
+              } else {
+                this.TEXT = params[key];
+              }
               break;
+            case 'st':
+              const subtext: string = params[key];
+              if(subtext.startsWith("b64.")) {
+                this.SUBTEXT = atob(subtext.substring(4));
+              } else {
+                this.SUBTEXT = params[key];
+              }
           }
       });
     });
@@ -81,15 +94,15 @@ export class CountdownComponent implements OnInit {
     this.milliseconds = Math.floor(calc / 100);
 
     if(this.days > 0) {
-      this.element.nativeElement.style.fontSize = "14vW";
+      this.element.nativeElement.style.fontSize = "13vW";
     } else if(this.hours > 0) {
-      this.element.nativeElement.style.fontSize = "18vW";
+      this.element.nativeElement.style.fontSize = "16vW";
     } else if(this.minutes > 0) {
-      this.element.nativeElement.style.fontSize = "26vW";
+      this.element.nativeElement.style.fontSize = "24vW";
     } else if(this.seconds > 0) {
-      this.element.nativeElement.style.fontSize = "40vW";
+      this.element.nativeElement.style.fontSize = "38vW";
     } else if(this.milliseconds == 0) {
-      this.element.nativeElement.style.fontSize = "14vW";
+      this.element.nativeElement.style.fontSize = "13vW";
     }
 
   }

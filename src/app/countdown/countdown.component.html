@@ -1,23 +1,27 @@
-<ng-container *ngIf="this.days > 0">
-    <span>{{this.days < 10 ? "0" + this.days : this.days}}</span>
-    <span>:</span>
-</ng-container>
-<ng-container *ngIf="this.hours > 0 || this.days > 0">
-    <span>{{this.hours < 10 ? "0" + this.hours : this.hours}}</span>
-    <span>:</span>
-</ng-container>
-<ng-container *ngIf="this.minutes > 0 || this.hours > 0 || this.days > 0">
-    <span>{{this.minutes < 10 ? "0" + this.minutes : this.minutes}}</span>
-    <span>:</span>
-</ng-container>
-<ng-container *ngIf="this.milliseconds > 0 || this.seconds > 0 || this.minutes > 0 || this.hours > 0 || this.days > 0">
-    <span>{{this.seconds < 10 ? "0" + this.seconds : this.seconds}}</span>
-    <small>.</small>
-</ng-container>
-<ng-container *ngIf="this.milliseconds > 0 || this.seconds > 0 || this.minutes > 0 || this.hours > 0 || this.days > 0">
-    <small>{{this.milliseconds}}</small>
-</ng-container>
-<ng-container *ngIf="this.text && this.text != ''">
-    <span class="endText">{{this.text}}</span>
-</ng-container>
-
+<div class="time">
+    <ng-container *ngIf="this.days > 0">
+        <span>{{this.days < 10 ? "0" + this.days : this.days}}</span>
+        <span>:</span>
+    </ng-container>
+    <ng-container *ngIf="this.hours > 0 || this.days > 0">
+        <span>{{this.hours < 10 ? "0" + this.hours : this.hours}}</span>
+        <span>:</span>
+    </ng-container>
+    <ng-container *ngIf="this.minutes > 0 || this.hours > 0 || this.days > 0">
+        <span>{{this.minutes < 10 ? "0" + this.minutes : this.minutes}}</span>
+        <span>:</span>
+    </ng-container>
+    <ng-container *ngIf="this.milliseconds > 0 || this.seconds > 0 || this.minutes > 0 || this.hours > 0 || this.days > 0">
+        <span>{{this.seconds < 10 ? "0" + this.seconds : this.seconds}}</span>
+        <small>.</small>
+    </ng-container>
+    <ng-container *ngIf="this.milliseconds > 0 || this.seconds > 0 || this.minutes > 0 || this.hours > 0 || this.days > 0">
+        <small>{{this.milliseconds}}</small>
+    </ng-container>
+    <ng-container *ngIf="this.text && this.text != ''">
+        <span class="endText">{{this.text}}</span>
+    </ng-container>
+</div>
+<div class="ad">
+    <span>{{this.SUBTEXT}}</span>
+</div>
